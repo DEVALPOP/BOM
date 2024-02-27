@@ -4,7 +4,7 @@ from DAXXMUSIC import app
 from pyrogram.types import InputMediaPhoto
 from strings.filters import command
 
-@app.on_message(command(["/tgm" , "تێلەگراف", "تیلەگراف"]))
+@app.on_message(command(["/tgm" , "ميديا", "تليجراف ميديا"]))
 def ul(_, message):
     reply = message.reply_to_message
     if reply.media:
@@ -14,7 +14,7 @@ def ul(_, message):
         for x in fk:
             url = "https://telegra.ph" + x
 
-        i.edit(f'**•⎆┊لینکی میدیا دروست کرا🕷** {url}')
+        i.edit(f'**•⎆┊يرجى تقديم رابط وسائط 🕷** {url}')
 
 ########____________________________________________________________######
 
@@ -28,4 +28,4 @@ def ul(_, message):
         for x in fk:
             url = "https://graph.org" + x
 
-        i.edit(f'**•⎆┊لینکی میدیا دروست کرا🕷**  {url}')
+        i.edit(f'**•⎆┊يرجى تقديم رابط وسائط 🕷**  {url}')
