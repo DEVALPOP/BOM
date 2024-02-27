@@ -36,7 +36,7 @@ async def log_(client, message, _):
         await message.reply_text(_["server_1"])
 
 
-@app.on_message(filters.command(["update", "gitpull", "نوێکردنەوە"], prefixes=["/", "!", "%", ",", "", ".", "@", "#"]) & SUDOERS)
+@app.on_message(filters.command(["update", "gitpull", "تحديث"], prefixes=["/", "!", "%", ",", "", ".", "@", "#"]) & SUDOERS)
 @language
 async def update_(client, message, _):
     if await is_heroku():
@@ -64,13 +64,13 @@ async def update_(client, message, _):
         "tsnrhtdd"[(format // 10 % 10 != 1) * (format % 10 < 4) * format % 10 :: 4],
     )
     for info in repo.iter_commits(f"HEAD..origin/{config.UPSTREAM_BRANCH}"):
-        updates += f"<b>➣ #{info.count()}: <a href={REPO_}/commit/{info}>{info.summary}</a> لەلایەن -> IQ7amo</b>\n\t\t\t\t<b>➥ لە کاتژمێر : {ordinal(int(datetime.fromtimestamp(info.committed_date).strftime('%d')))} {datetime.fromtimestamp(info.committed_date).strftime('%b')}, {datetime.fromtimestamp(info.committed_date).strftime('%Y')}</b>\n\n"
-    _update_response_ = "<b>⇜ نوێترین گۆڕانکاری لە فایلەکانی بۆت !\n\n➣ دەستی کرد بە نوێکردنەوە\n\nنوێکارییەکان:</b>\n\n"
+        updates += f"<b>➣ #{info.count()}: <a href={REPO_}/commit/{info}>{info.summary}</a> من قِبَل -> IQ7amo</b>\n\t\t\t\t<b>➥ في اليوم اليوم : {ordinal(int(datetime.fromtimestamp(info.committed_date).strftime('%d')))} {datetime.fromtimestamp(info.committed_date).strftime('%b')}, {datetime.fromtimestamp(info.committed_date).strftime('%Y')}</b>\n\n"
+    _update_response_ = "<b>⇜ أحدث التعديلات على ملفات البوت !\n\n➣ قام بالتحديث\n\nالتحديثات الجديدة:</b>\n\n"
     _final_updates_ = _update_response_ + updates
     if len(_final_updates_) > 4096:
         url = await DAXXBin(updates)
         nrs = await response.edit(
-            f"<b>⇜ نوێترین گۆڕانکاری لە فایلەکانی بۆت !\n\n➣ دەستی کرد بە نوێکردنەوە\n\nنوێکارییەکان: \n\n<a href={url}>پشکنینی نوێکارییەکان </a>⎋</b>"
+            f"<b>⇜ أحدث التعديلات على ملفات البوت !\n\n➣ قام بالتحديث\n\nالتحديثات الجديد: \n\n<a href={url}>تحليل التحديثات الجديدة </a>⎋</b>"
         )
     else:
         nrs = await response.edit(_final_updates_, disable_web_page_preview=True)
@@ -112,13 +112,13 @@ async def update_(client, message, _):
 
 @app.on_message(filters.command(["restart"]) & SUDOERS)
 async def restart_(_, message):
-    response = await message.reply_text("**دووبارە دەستپێدەکاتەوە . . .**")
+    response = await message.reply_text("**يعود مرة أخرى...**")
     ac_chats = await get_active_chats()
     for x in ac_chats:
         try:
             await app.send_message(
                 chat_id=int(x),
-                text=f"**{app.mention} نوێ دەکرێتەوە\n\nدەتوانی دوای 15 بۆ 20 گۆرانی لێبدەیتەوە**",
+                text=f"**{app.mention} يُحدث جديد\n\nيمكنك الغناء بين 15 و 20 أغنية**",
             )
             await remove_active_chat(x)
             await remove_active_video_chat(x)
@@ -132,6 +132,6 @@ async def restart_(_, message):
     except:
         pass
     await response.edit_text(
-        "**» پڕۆسەی دووبارە دەستپێکردنەوە دەستی پێکرد, کەمێك چاوەڕێ بکە تاوەکو بۆت چالاك دەبێتەوە**"
+        "**» بعد تشغيل عملية البدء مرتين، يُفضل الانتظار حتى يتم تنشيط البوت.**"
     )
     os.system(f"kill -9 {os.getpid()} && bash start")
