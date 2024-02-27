@@ -6,11 +6,11 @@ from strings.filters import command
 SPAM_CHATS = []
 
 
-@app.on_message(command(["/mantion", "/all", "تاگ", "@all"]) & filters.group)
+@app.on_message(command(["/mantion", "تاك للكل", "تاك", "@all"]) & filters.group)
 async def tag_all_users(_, message):
     replied = message.reply_to_message
     if len(message.command) < 2 and not replied:
-        await message.reply_text("**ڕیپلەی نامەیە یان شتێ بکە یان لەگەڵ فەرمان نامەیە بنووسە**")
+        await message.reply_text("**رد على الرسالة أو اكتب شيئًا أو استخدم أمرًا!**")
         return
     if replied:
         SPAM_CHATS.append(message.chat.id)
@@ -52,7 +52,7 @@ async def tag_all_users(_, message):
             pass
 
 
-@app.on_message(command(["/cancel", "وەستانی تاگ"]) & ~filters.private)
+@app.on_message(command(["/cancel", "ايقاف"]) & ~filters.private)
 async def cancelcmd(_, message):
     chat_id = message.chat.id
     if chat_id in SPAM_CHATS:
@@ -60,8 +60,8 @@ async def cancelcmd(_, message):
             SPAM_CHATS.remove(chat_id)
         except Exception:
             pass
-        return await message.reply_text("**تاگ بە سەرکەوتوویی وەستا**")
+        return await message.reply_text("**اعتذر، هل يمكنك توضيح ذلك بشكل أكثر دقة؟**")
 
     else:
-        await message.reply_text("**ɴᴏ ᴘʀᴏᴄᴇss ᴏɴɢᴏɪɴɢ!**")
+        await message.reply_text("**لا يوجد عملية جارية!**")
         return       
