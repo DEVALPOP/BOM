@@ -91,10 +91,10 @@ async def member_has_left(client: app, member: ChatMemberUpdated):
                 profile_path=photo,
             )
         
-            caption = f"**• ئەندامێك لێفتی کرد لە گرووپ\n\n• ئەندام: {user.mention} لێفتی کرد لە گرووپ💔\n• خوات لەگەڵ بەم زوانە دەتبینمەوە!**"
-            button_text = "๏ ئەندام ๏"
+            caption = f"**• عضو انضم إلى المجموعة.\n\n• عضو: {user.mention} انضم إلى المجموعة.❤️\n• يشرفني أن أتعلم معكم هذه اللغة!**"
+            button_text = "๏ عضو ๏"
 
-            # Generate a deep link to open the user's profile
+            # Generate a deep link to open the user s profile
             deep_link = f"tg://openmessage?user_id={user.id}"
 
             # Send the message with the photo, caption, and button
