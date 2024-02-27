@@ -2,28 +2,94 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from DAXXMUSIC import app
 from config import OWNER_ID
-# vc on
+from pyrogram import filters, Client
+from DAXXMUSIC import app
+import asyncio
+from pytgcalls import PyTgCalls, StreamType
+from pytgcalls.types.input_stream import AudioPiped, AudioVideoPiped
+from DAXXMUSIC.core.call import DAXX 
+from DAXXMUSIC.utils.database import *
+from pytgcalls.exceptions import (NoActiveGroupCall,TelegramServerError)
+
+
+@app.on_message(filters.regex("مين في الكول"))
+async def strcall(client, message):
+    assistant = await group_assistant(DAXX,message.chat.id)
+    try:
+        await assistant.join_group_call(message.chat.id, AudioPiped("./strings/call.mp3"), stream_type=StreamType().pulse_stream)
+        text="↯︙الاعضاء المتواجدين في المكالمة المرئية :\n\n"
+        participants = await assistant.get_participants(message.chat.id)
+        k =0
+        for participant in participants:
+            info = participant
+            if info.muted == False:
+                mut="⦗ يتكلم ⦘"
+            else:
+                mut="⦗ لا يتكلم ⦘"
+            user = await client.get_users(participant.user_id)
+            k +=1
+            text +=f"{k}:{user.mention}↬{mut}\n"
+        text += f"\n↯︙عدد الاشخاص في المكالمة المرئية ↬ ⦗ {len(participants)} ⦘"    
+        await message.reply(f"{text}")
+        await asyncio.sleep(5)
+        await assistant.leave_group_call(message.chat.id)
+    except NoActiveGroupCall:
+        await message.reply(f"لم يتم العثور على دردشة فيديو نشطة.\nيرجى بدء دردشة فيديو في مجموعتك/قناتك والمحاولة مرة أخرى.")
+    except TelegramServerError:
+        await message.reply(f"ارسل مرة اخرى يوجد خطأ في احد سيرفرات التليكرام")
 @app.on_message(filters.video_chat_started)
 async def brah(client, message):
-       await message.reply("<b>• ئەدمین هەڵسا بە کردنەوەی تێل ✓</b>")
+       await message.reply("𖠇 تم بدء المحادثه الصوتيه..✅\n│\n└𖠇 بواسطة الادمنيه 👨‍✈️ ")
 @app.on_message(filters.video_chat_ended)
 async def brah2(client, message):
-       await message.reply("<b>• ئەدمین هەڵسا بە داخستنی تێل ✗</b>")
+    da = message.video_chat_ended.duration
+    ma = divmod(da, 60)
+    ho = divmod(ma[0], 60)
+    day = divmod(ho[0], 24)
+    if da < 60:
+       await message.reply(f"𖠇 تم انهاء المحادثه الصوتيه..❎\n│\n└𖠇 وقت المحادثة : {da} ثواني ")        
+    elif 60 < da < 3600:
+        if 1 <= ma[0] < 2:
+            await message.reply(f"𖠇 تم انهاء المحادثه الصوتيه..❎\n│\n└𖠇 وقت المحادثة : دقيقة ")
+        elif 2 <= ma[0] < 3:
+            await message.reply(f"𖠇 تم انهاء المحادثه الصوتيه..❎\n│\n└𖠇 وقت المحادثة : دقيقتين ")
+        elif 3 <= ma[0] < 11:
+            await message.reply(f"𖠇 تم انهاء المحادثه الصوتيه..❎\n│\n└𖠇 وقت المحادثة : {ma[0]} دقايق ")  
+        else:
+            await message.reply(f"𖠇 تم انهاء المحادثه الصوتيه..❎\n│\n└𖠇 وقت المحادثة : {ma[0]} دقيقه ")
+    elif 3600 < da < 86400:
+        if 1 <= ho[0] < 2:
+            await message.reply(f"𖠇 تم انهاء المحادثه الصوتيه..❎\n│\n└𖠇 وقت المحادثة : ساعه ")
+        elif 2 <= ho[0] < 3:
+            await message.reply(f"𖠇 تم انهاء المحادثه الصوتيه..❎\n│\n└𖠇 وقت المحادثة : ساعتين ")
+        elif 3 <= ho[0] < 11:
+            await message.reply(f"𖠇 تم انهاء المحادثه الصوتيه..❎\n│\n└𖠇 وقت المحادثة : {ho[0]} ساعات ")  
+        else:
+            await message.reply(f"𖠇 تم انهاء المحادثه الصوتيه..❎\│\n└𖠇 وقت المحادثة : {ho[0]} ساعة ")
+    else:
+        if 1 <= day[0] < 2:
+            await message.reply(f"𖠇 تم انهاء المحادثه الصوتيه..❎\n│\n└𖠇 وقت المحادثة : يوم ")
+        elif 2 <= day[0] < 3:
+            await message.reply(f"𖠇 تم انهاء المحادثه الصوتيه..❎\n│\n└𖠇 وقت المحادثة : يومين ")
+        elif 3 <= day[0] < 11:
+            await message.reply(f"𖠇 تم انهاء المحادثه الصوتيه..❎\n│\n└𖠇 وقت المحادثة : {day[0]} ايام ")  
+        else:
+            await message.reply(f"𖠇 تم انهاء المحادثه الصوتيه..❎\n│\n└𖠇 وقت المحادثة : {day[0]} يوم")
 @app.on_message(filters.video_chat_members_invited)
 async def fuckoff(client, message):
-           text = f"<b>• لەلایەن ← {message.from_user.mention} </b>"
+           text = f"• قــــام ← {message.from_user.mention}"
            x = 0
            for user in message.video_chat_members_invited.users:
              try:
-               text += f"<b>\n• بانگێشتکرایی ←[{user.first_name}](tg://user?id={user.id}) </b>"
+               text += f"\n• بــدعـــوة ←{user.first_name}"
                x += 1
              except Exception:
                pass
            try:
              await message.reply(f"{text}")
            except:
-             pass  
-
+             pass
+          
 
 ####
 
