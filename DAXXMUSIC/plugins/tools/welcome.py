@@ -70,7 +70,7 @@ def welcomepic(pic, user, chatname, id, uname):
 
 @app.on_message(filters.command("الترحيب") & ~filters.private)
 async def auto_state(_, message):
-    usage = "**استخدام:**\n⦿ الترحيب تفعيل"
+    usage = "**استخدام:**\n⦿ تفعيل الترحيب\n"
     if len(message.command) == 1:
         return await message.reply_text(usage)
     chat_id = message.chat.id
