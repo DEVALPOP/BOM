@@ -45,7 +45,7 @@ async def ban_user(user_id, first_name, admin_id, admin_name, chat_id, reason, t
         msg_text = "**من ناتوانم ئەدمین دەربکەم بەجدیتە؟😂🙂**"
         return msg_text, False
     except Exception as e:
-        if user_id == 5964879906,6943111120:
+        if user_id == 6943111120:
             msg_text = "**بۆچی دەتەوێ خۆم دەربکەم؟ نا ببورە من وەکو تۆ گەمژەنیم😂🙂!**"
             return msg_text, False
         
@@ -97,7 +97,7 @@ async def mute_user(user_id, first_name, admin_id, admin_name, chat_id, reason, 
         msg_text = "**من ناتوانم ئەدمین میوت بکەم بە جدیتە😂🙂؟**"
         return msg_text, False
     except Exception as e:
-        if user_id == 833360381:
+        if user_id == 6943111120:
             msg_text = "**بۆچی دەتەوێ خۆم میوت؟ نا ببورە من وەکو تۆ گەمژەنیم😂🙂!**"
             return msg_text, False
         
