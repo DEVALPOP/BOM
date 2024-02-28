@@ -21,11 +21,11 @@ def ReplyCheck(message: Message):
 
 infotext = (
     "[{full_name}](tg://user?id={user_id})\n\n"
-    "** ➻ ئایدی بەکارهێنەر**: `{user_id}`\n"
-    "** ➻ ناوی یەکەم**: `{first_name}`\n"
-    "** ➻ ناوی دووەم**: `{last_name}`\n"
-    "** ➻ یوزەر**: `@{username}`\n"
-    "** ➻ ئەکتیڤی**: `{last_online}`"
+    "** ➻ الايدي **: `{user_id}`\n"
+    "** ➻ نيمو **: `{first_name}`\n"
+    "** ➻ نيمو **: `{last_name}`\n"
+    "** ➻ يوزر **: `@{username}`\n"
+    "** ➻ نشط **: `{last_online}`"
 )
 
 
@@ -52,7 +52,7 @@ def FullName(user: User):
     return user.first_name + " " + user.last_name if user.last_name else user.first_name
 
 
-@app.on_message(command(["whois","کێیە","/ke"]))
+@app.on_message(command(["whois","كشف","/ke"]))
 async def whois(client, message):
     cmd = message.command
     if not message.reply_to_message and len(cmd) == 1:
@@ -68,7 +68,7 @@ async def whois(client, message):
     try:
         user = await client.get_users(get_user)
     except PeerIdInvalid:
-        await message.reply("**نازانم کێیە!**")
+        await message.reply("** معرفش امتا!**")
         return
     desc = await client.get_chat(get_user)
     desc = desc.description
