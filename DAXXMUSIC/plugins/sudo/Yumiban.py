@@ -37,11 +37,11 @@ strict_txt = [
 
 
  
-ban = ["ban","boom","دەرکردن"]
-unban = ["unban","لادانی دەرکردن"]
-mute = ["mute","silent","shut","ئاگاداری"]
-unmute = ["unmute","speak","free","لادانی ئاگاداری"]
-kick = ["kick", "out","nikaal","nikal","تێهەڵدان"]
+ban = ["ban","boom","حظر"]
+unban = ["unban"," الغاء حظر"]
+mute = ["mute","silent","shut","كتم"]
+unmute = ["unmute","speak","الغاء الكتم"," الغاء كتم"]
+kick = ["kick", "out","nikaal","nikal","طرد"]
 promote = ["promote","adminship","ئەدمین"]
 demote = ["demote","lelo","لادانی ئەدمین"]
 group = ["group"]
