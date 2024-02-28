@@ -242,7 +242,7 @@ async def unban_command_handler(client, message):
 
 
 
-@app.on_message(filters.command(["mute", "كتم"], prefixes=["/", "!", "%", ",", ".", "@", "#"]))
+@app.on_message(filters.command(["/mute", "كتم"], prefixes=[""]))
 async def mute_command_handler(client, message):
     chat = message.chat
     chat_id = chat.id
