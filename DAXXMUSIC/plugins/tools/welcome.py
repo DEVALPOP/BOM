@@ -68,9 +68,9 @@ def welcomepic(pic, user, chatname, id, uname):
 # FUCK you bhosadiwale 
 
 
-@app.on_message(filters.command("wel") & ~filters.private)
+@app.on_message(filters.command("الترحيب") & ~filters.private)
 async def auto_state(_, message):
-    usage = "**بەکارهێنان:**\n⦿/wel [on|off]\n"
+    usage = "**استخدام:**\n⦿ تفعيل الترحيب\n"
     if len(message.command) == 1:
         return await message.reply_text(usage)
     chat_id = message.chat.id
@@ -81,22 +81,22 @@ async def auto_state(_, message):
     ):
         A = await wlcm.find_one(chat_id)
         state = message.text.split(None, 1)[1].strip().lower()
-        if state == "on":
+        if state == "تفعيل":
             if A:
-                return await message.reply_text("**بەخێرهاتن پێشتر چالاککراوە**")
+                return await message.reply_text("**  تم تفعيل المجمــوعــه مسبقا**")
             elif not A:
                 await wlcm.add_wlcm(chat_id)
-                await message.reply_text(f"**بەخێرهاتن چالاککرا بۆ {message.chat.title}**")
-        elif state == "off":
+                await message.reply_text(f"**  تم تفعيلها مسبقا {message.chat.title}**")
+        elif state == "تعطيل":
             if not A:
-                return await message.reply_text("**بەخێرهاتن پێشتر لەکارخراوە**")
+                return await message.reply_text("** تم تفعيلها مسبقا**")
             elif A:
                 await wlcm.rm_wlcm(chat_id)
-                await message.reply_text(f"**بەخێرهاتن لەکارخرا لە {message.chat.title}**")
+                await message.reply_text(f"**  تم تفعيل المجمــوعــه{message.chat.title}**")
         else:
             await message.reply_text(usage)
     else:
-        await message.reply("**چالاکردنی فەرمانی بەخێرهاتن تەنیا بۆ ئەدمینەکان**")
+        await message.reply("** امر تفعيل الترحيب خاص ب الادمن فقط**")
 
 # ... (copy paster teri maa ki chut  )
 
@@ -119,24 +119,24 @@ async def greet_group(_, member: ChatMemberUpdated):
         )
     except AttributeError:
         pic = "DAXXMUSIC/assets/upic.png"
-    if (temp.MELCOW).get(f"**بەخێربێی -{member.chat.id} **") is not None:
+    if (temp.MELCOW).get(f"**اهلا بك عزيزي -{member.chat.id} **") is not None:
         try:
-            await temp.MELCOW[f"**بەخێربێی -{member.chat.id}**"].delete()
+            await temp.MELCOW[f"**اهلا بك عزيزي -{member.chat.id}**"].delete()
         except Exception as e:
             LOGGER.error(e)
     try:
         welcomeimg = welcomepic(
             pic, user.first_name, member.chat.title, user.id, user.username
         )
-        temp.MELCOW[f"**بەخێربێی -{member.chat.id}**"] = await app.send_photo(
+        temp.MELCOW[f"**اهلا بك عزيزي -{member.chat.id}**"] = await app.send_photo(
             member.chat.id,
             photo=welcomeimg,
             caption=f"""
-** ↫ بەخێربێیت ئەزیزم بۆ {member.chat.title}
+** ↫  نورت الجروب {member.chat.title}
 ➖➖➖➖➖➖➖➖➖➖➖➖
-ناو ✧ {user.mention}
-ئایدی ✧ {user.id}
-یوزەر ✧ @{user.username}
+اليوزر ✧ {user.mention}
+الايدي ✧ {user.id}
+اليوزر ✧ @{user.username}
 ➖➖➖➖➖➖➖➖➖➖➖➖**
 """,
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(f"⦿ زیادم بکە بۆ کەناڵت ⦿", url=f"https://t.me/IQMCBOT?startchannel=true")]])
