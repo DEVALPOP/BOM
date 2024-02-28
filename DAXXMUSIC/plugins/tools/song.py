@@ -38,7 +38,7 @@ def get_text(message: Message) -> [None, str]:
         return None
 
 
-@app.on_message(filters.command(["yt", "video"]))
+@app.on_message(filters.command(["yt", "video", "تحميل فيديو"]))
 async def ytmusic(client, message: Message):
     urlissed = get_text(message)
     await message.delete()
@@ -46,7 +46,7 @@ async def ytmusic(client, message: Message):
     user_name = message.from_user.first_name
     chutiya = "[" + user_name + "](tg://user?id=" + str(user_id) + ")"
 
-    pablo = await client.send_message(message.chat.id, f"**╮ گةًڕآنَِٰہ بّہۆ ڤیدُیۆ... 🎧♥️╰**")
+    pablo = await client.send_message(message.chat.id, f"**╮جـار تحــمـيل فــيديو... 🎧♥️╰**")
     if not urlissed:
         await pablo.edit(
             "**⚠️ گۆرانی نەدۆزرایەوە دڵنیابەوە لەوەی ناو یان لینك دروستە**"
