@@ -75,7 +75,7 @@ async def remove(client, message):
 
 # ------------------------------------------------------------------------------- #
 
-@app.on_message(command(["/admins","/staff","ستاف","ئەدمینەکان","staff"]))
+@app.on_message(command(["/admins","/staff","الادمنيه"]))
 async def admins(client, message):
   try: 
     adminList = []
@@ -123,7 +123,7 @@ async def admins(client, message):
 
 # ------------------------------------------------------------------------------- #
 
-@app.on_message(command(["bots","بۆتەکان","/bots"]))
+@app.on_message(command(["bots","بوتات","/bots"]))
 async def bots(client, message):  
   try:    
     botList = []
