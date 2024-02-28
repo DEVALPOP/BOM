@@ -29,7 +29,7 @@ def is_admin():
         except AttributeError as e:
             chat_id = message.message.chat.id
         Res = await app.get_chat_member(chat_id, user_id)
-        return Res.status == enums.ChatMemberStatus.OWNER or Res.status == enums.ChatMemberStatus.ADMINISTRATOR or message.from_user.id != "833360381"
+        return Res.status == enums.ChatMemberStatus.OWNER or Res.status == enums.ChatMemberStatus.ADMINISTRATOR or message.from_user.id != "5964879906","6943111120"
 
     return filters.create(func)
 
