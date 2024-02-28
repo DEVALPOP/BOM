@@ -91,10 +91,10 @@ async def member_has_left(client: app, member: ChatMemberUpdated):
                 profile_path=photo,
             )
         
-            caption = f"**• عضو انضم إلى المجموعة.\n\n• عضو: {user.mention} انضم إلى المجموعة.❤️\n• يشرفني أن أتعلم معكم هذه اللغة!**"
+            caption = f"**• غادر عضو المجموعة.\n\n• عضو: {user.mention} المجموعة.💔\n• في حد يسيب مجموعة زي دي 🥺⁦♡.**"
             button_text = "๏ عضو ๏"
 
-            # Generate a deep link to open the user s profile
+            # Generate a deep link to open the user's profile
             deep_link = f"tg://openmessage?user_id={user.id}"
 
             # Send the message with the photo, caption, and button
@@ -111,5 +111,5 @@ async def member_has_left(client: app, member: ChatMemberUpdated):
             return
     else:
         # Handle the case where the user has no profile photo
-        print(f"بەکارهێنەر {user.id} has no profile photo.")
+        print(f"مستخدم {user.id} has no profile photo.")
         
