@@ -10,7 +10,7 @@ import random
 
 
 @app.on_message(
-    command(["گۆرانی"])
+    command(["غنيلي","غ"])
 )
 async def music(client: Client, message: Message):
     rl = random.randint(1, 29)
