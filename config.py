@@ -12,10 +12,10 @@ API_HASH = getenv("API_HASH")
 # Get your token from @BotFather on Telegram.
 BOT_TOKEN = getenv("BOT_TOKEN")
 # Add Owner Username without @ 
-OWNER_USERNAME = getenv("OWNER_USERNAME","IQ7amo")
-USER_OWNER = getenv("USER_OWNER","IQ7amo")
+OWNER_USERNAME = getenv("OWNER_USERNAME","V_9_G")
+USER_OWNER = getenv("USER_OWNER","V_9_G")
 # Get Your bot username
-BOT_USERNAME = getenv("BOT_USERNAME" , "IQMCBOT")
+BOT_USERNAME = getenv("BOT_USERNAME" , "MUSIC_ALPOP_BOT")
 # Don't Add style font 
 BOT_NAME = getenv("BOT_NAME" , None)
 #get Your Assistant User name
@@ -33,10 +33,10 @@ SONG_DOWNLOAD_DURATION = int(
 
 
 # Chat id of a group for logging bot's activities
-LOGGER_ID = int(getenv("LOGGER_ID", -1001906948158))
+LOGGER_ID = int(getenv("LOGGER_ID", -1001816591892))
 
 # Get this value from  on Telegram by /id
-OWNER_ID = int(getenv("OWNER_ID", 833360381))
+OWNER_ID = int(getenv("OWNER_ID", 5964879906))
 
 ## Fill these variables if you're deploying on heroku.
 # Your heroku app name
