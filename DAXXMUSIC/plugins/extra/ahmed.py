@@ -4,7 +4,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, ChatPermi
 from DAXXMUSIC import app
 
 
-@app.on_message(filters.command(["حظر"], prefixes=["/", "!", "%", ",", ".", "@", "#", "*"]))
+@app.on_message(filters.command(["حظر"], prefixes=["/", "!", "%", ",", ".", "@", "#", "*"]), group=5)
 async def test_ban(c, msg):
 
     if msg.text == "حظر" and msg.reply_to_message:
