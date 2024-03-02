@@ -5,6 +5,7 @@ from config import BANNED_USERS, PING_IMG_URL, lyrical, START_IMG_URL, MONGO_DB_
 from pyrogram.enums import ChatMembersFilter
 from pyrogram.enums import ChatMemberStatus
 from pyrogram import Client as app, filters, enums
+from pyrogram.types import ChatPermissions
 
 unmute_permissions = ChatPermissions(
     can_send_messages=True,
