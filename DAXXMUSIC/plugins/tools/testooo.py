@@ -1,43 +1,11 @@
 import asyncio
 import requests
-from VeGaXMusic import app
-from VeGaXMusic.core.call import VeGay
-from VeGaXMusic.utils.database import set_loop
-from VeGaXMusic.utils.decorators import AdminRightsCheck
 from datetime import datetime
 from config import BANNED_USERS, PING_IMG_URL, lyrical, START_IMG_URL, MONGO_DB_URI, OWNER_ID
-from VeGaXMusic.utils import bot_sys_stats
-from VeGaXMusic.utils.decorators.language import language
-import random
-import time
 from pyrogram.enums import ChatMembersFilter
 from pyrogram.enums import ChatMemberStatus
-from aiohttp import ClientSession
-from traceback import format_exc
-import config
-import re
-import string
-from pyrogram import enums
-import lyricsgenius as lg
-from pyrogram.types import (InlineKeyboardButton, ChatPermissions, InlineKeyboardMarkup, Message, User)
-from pyrogram import Client, filters
-from VeGaXMusic import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app)
-from typing import Union
-import sys
-import os
-from pyrogram.types import ChatPermissions, ChatPrivileges
-from pyrogram.errors import PeerIdInvalid
-from os import getenv
-from VeGaXMusic.misc import SUDOERS
-from config import OWNER_ID
-from config import BANNED_USERS
-from config import BANNED_USERS, OWNER_ID
-from pyrogram import filters, Client
-from telegraph import upload_file
-from dotenv import load_dotenv
-from VeGaXMusic.utils.database import (set_cmode,get_assistant) 
-from VeGaXMusic.utils.decorators.admins import AdminActual
-from VeGaXMusic import app
+from pyrogram import Client as app, filters, enums
+
 unmute_permissions = ChatPermissions(
     can_send_messages=True,
     can_send_media_messages=True,
